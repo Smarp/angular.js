@@ -6,12 +6,7 @@ export BROWSER_STACK_ACCESS_KEY=`echo $BROWSER_STACK_ACCESS_KEY | rev`
 export SAUCE_ACCESS_KEY=`echo $SAUCE_ACCESS_KEY | rev`
 
 if [ $JOB = "unit" ]; then
-  if [ "$BROWSER_PROVIDER" == "browserstack" ]; then
-    BROWSERS="BS_Chrome,BS_Safari,BS_Firefox,BS_IE_9,BS_IE_10,BS_IE_11,BS_iOS"
-  else
-    BROWSERS="SL_Chrome,SL_Safari,SL_Firefox,SL_IE_9,SL_IE_10,SL_IE_11,SL_iOS"
-  fi
-
+  BROWSERS="SL_Chrome,SL_Safari,SL_Firefox,SL_IE_8,SL_IE_9,SL_IE_10,SL_IE_11,SL_iOS"
   grunt test:promises-aplus
   grunt test:unit --browsers $BROWSERS --reporters dots
   grunt ci-checks
